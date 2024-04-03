@@ -14,6 +14,8 @@ torch = "*"
 torchvision = "*"
 torchaudio = "*"
 qrcode = "*"
+pandas = "*"
+tabulate = "*"
 
 [dev-packages]
 
