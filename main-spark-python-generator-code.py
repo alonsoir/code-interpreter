@@ -6,8 +6,12 @@ from pyspark.sql import SparkSession
 
 def main():
     print("hello from spark world!!!")
+    # Run this command to create your spark context
+    # ./sbin/start-connect-server.sh --packages org.apache.spark:spark-connect_2.12:3.4.0
     # Run this command to know if there is a java pid using this 15002 port.
     # lsof -iTCP -sTCP:LISTEN -n -P | grep 15002
+    # Be sure that this client runs the same version than spark server, in this example, i have in my local spark-3.4.0.
+    # Check Pipfile to change versions if your cluster is above or below.
     spark = SparkSession.builder.remote("sc://localhost:15002").getOrCreate()
     # spark = SparkSession.builder.getOrCreate()
     csv_file_path = "titanic.csv"
