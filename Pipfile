@@ -16,6 +16,13 @@ torchaudio = "*"
 qrcode = "*"
 pandas = "*"
 tabulate = "*"
+pyspark = "==3.4.2"
+setuptools = "*"
+pyarrow = "*"
+grpcio = "*"
+google = "*"
+google-api-python-client = "*"
+grpcio-status = "*"
 
 [dev-packages]
 
