@@ -13,23 +13,23 @@ def loadPDF():
 
 def main():
     print("hello! This is a langchain agent tryin to solve answers from csv files.")
-    agent = create_csv_agent(
+    csv_agent = create_csv_agent(
         OpenAI(temperature=0),
         "titanic.csv",
         verbose=True,
         agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
     )
-    agent.run("how many rows are there?")
-    agent.run("how many people have more than 3 siblings")
-    agent.run("whats the square root of the average age?")
+    csv_agent.run("how many rows are there?")
+    csv_agent.run("how many people have more than 3 siblings")
+    csv_agent.run("whats the square root of the average age?")
 
-    agent = create_csv_agent(
+    csv_agent = create_csv_agent(
         ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613"),
         ["titanic.csv", "tested.csv"],
         verbose=True,
         agent_type=AgentType.OPENAI_FUNCTIONS,
     )
-    agent.run("how many rows in the age column are different between the two dfs?")
+    csv_agent.run("how many rows in the age column are different between the two dfs?")
 
 
 if __name__ == "__main__":

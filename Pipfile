@@ -27,6 +27,7 @@ pypdf = "*"
 pypdf2 = "*"
 faiss-cpu = "*"
 tiktoken = "*"
+langchain-community = "*"
 
 [dev-packages]
 

@@ -30,7 +30,7 @@ def calcular_valores_segmentacion(tamano_archivo, complejidad_archivo):
     return chunk_size, chunk_overlap
 
 
-def main(query, filename,chunk_size, chunk_overlap):
+def main(query, filename, chunk_size, chunk_overlap):
     print("Hello main-pdf!")
     # read in your pdf file
     pdf_reader = PdfReader(filename)
@@ -49,6 +49,7 @@ def main(query, filename,chunk_size, chunk_overlap):
     docs = docsearch.similarity_search(query)
     # Filtrar los documentos relevantes para la pregunta
     filtered_docs = filter_relevant_docs(docs, query)
+    print(f"query is {query}.")
     if filtered_docs:
         res = chain.run(input_documents=filtered_docs, question=query)
         print(res)
@@ -90,4 +91,4 @@ if __name__ == "__main__":
     print(
         f"file is {filename} complexity is {complejidad} length file is {tamanyo_bytes} chunk_size is {chunk_size} chunk_overlap is {chunk_overlap}."
     )
-    main(query, filename,chunk_size, chunk_overlap)
+    main(query, filename, chunk_size, chunk_overlap)
