@@ -15,30 +15,30 @@ from langchain_openai import OpenAI
 def calcular_valores_segmentacion(tamano_archivo, complejidad_archivo):
     # Calcular chunk_size basado en el tamaño del archivo
     chunk_size = (
-        tamano_archivo // 10
+        tamano_archivo // 25
     )  # Dividir el tamaño del archivo por 10 (ajustable según necesidades)
 
     if complejidad_archivo == "alta":
         chunk_overlap = (
-            chunk_size // 10
+            chunk_size // 35
         )  # Usar un solapamiento del 10% del chunk_size para archivos complejos
     elif complejidad_archivo == "baja":
         chunk_overlap = (
-            chunk_size // 5
+            chunk_size // 25
         )  # Usar un solapamiento del 20% del chunk_size para archivos menos complejos
 
     return chunk_size, chunk_overlap
 
 
-def main(query, filename):
+def main(query, filename,chunk_size, chunk_overlap):
     print("Hello main-pdf!")
     # read in your pdf file
     pdf_reader = PdfReader(filename)
     # read data from the file and put them into a variable called text
     text = readDataFromFile(pdf_reader)
     text_splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1024,
-        chunk_overlap=64,
+        chunk_size=chunk_size,
+        chunk_overlap=chunk_overlap,
         length_function=len,
     )
     texts = text_splitter.split_text(text)
@@ -90,4 +90,4 @@ if __name__ == "__main__":
     print(
         f"file is {filename} complexity is {complejidad} length file is {tamanyo_bytes} chunk_size is {chunk_size} chunk_overlap is {chunk_overlap}."
     )
-    main(query, filename)
+    main(query, filename,chunk_size, chunk_overlap)
