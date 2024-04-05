@@ -23,6 +23,10 @@ grpcio = "*"
 google = "*"
 google-api-python-client = "*"
 grpcio-status = "*"
+pypdf = "*"
+pypdf2 = "*"
+faiss-cpu = "*"
+tiktoken = "*"
 
 [dev-packages]
 

@@ -12,8 +12,8 @@ def main():
     # lsof -iTCP -sTCP:LISTEN -n -P | grep 15002
     # Be sure that this client runs the same version than spark server, in this example, i have in my local spark-3.4.0.
     # Check Pipfile to change versions if your cluster is above or below.
-    spark = SparkSession.builder.remote("sc://localhost:15002").getOrCreate()
-    # spark = SparkSession.builder.getOrCreate()
+    # spark = SparkSession.builder.remote("sc://localhost:15002").getOrCreate()
+    spark = SparkSession.builder.getOrCreate()
     csv_file_path = "titanic.csv"
     df = spark.read.csv(csv_file_path, header=True, inferSchema=True)
     df.show()
@@ -21,7 +21,9 @@ def main():
     agent.run("how many rows are there?")
     agent.run("how many people have more than 3 siblings")
     agent.run("whats the square root of the average age?")
-    agent.run("Crea un fichero parquet a partir del fichero titanic.csv")
+    agent.run(
+        "Crea un fichero parquet a partir del dataframe df y llamalo Titanic.parquet"
+    )
     agent.run(
         """
     who bought the most expensive ticket?
