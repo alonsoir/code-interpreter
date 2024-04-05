@@ -2,6 +2,13 @@ from langchain.agents.agent_types import AgentType
 from langchain_experimental.agents.agent_toolkits import create_csv_agent
 from langchain_openai import ChatOpenAI, OpenAI
 from dotenv import load_dotenv
+from langchain.document_loaders import PagedPDFSplitter
+
+
+def loadPDF():
+    loader = PagedPDFSplitter("mycv.pdf")
+    data = loader.load()
+    print(data)
 
 
 def main():
@@ -28,3 +35,4 @@ def main():
 if __name__ == "__main__":
     load_dotenv()
     main()
+    loadPDF()
