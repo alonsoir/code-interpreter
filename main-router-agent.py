@@ -22,16 +22,14 @@ prompt = base_prompt.partial(instructions=instructions)
 agentpython = create_openai_functions_agent(
     ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0), pythontools, prompt
 )
-agent_pythonexecutor = AgentExecutor(
-    agent=agentpython, tools=pythontools, verbose=True
-)
+agent_pythonexecutor = AgentExecutor(agent=agentpython, tools=pythontools, verbose=True)
 
 csv_agent = create_csv_agent(
-        ChatOpenAI(temperature=0, model="gpt-3.5-turbo"),
-        "titanic.csv",
-        verbose=True,
-        agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
-    )
+    ChatOpenAI(temperature=0, model="gpt-3.5-turbo"),
+    "titanic.csv",
+    verbose=True,
+    agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
+)
 
 
 # Crea el router de agentes

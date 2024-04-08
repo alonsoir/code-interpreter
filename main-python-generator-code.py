@@ -23,7 +23,9 @@ def main():
     agentpython = create_openai_functions_agent(
         ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0), pythontools, prompt
     )
-    agent_pythonexecutor = AgentExecutor(agent=agentpython, tools=pythontools, verbose=True)
+    agent_pythonexecutor = AgentExecutor(
+        agent=agentpython, tools=pythontools, verbose=True
+    )
 
     agent_pythonexecutor.invoke({"input": "What is the 10th fibonacci number?"})
     agent_pythonexecutor.invoke(

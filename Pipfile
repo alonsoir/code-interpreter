@@ -28,6 +28,8 @@ pypdf2 = "*"
 faiss-cpu = "*"
 tiktoken = "*"
 langchain-community = "*"
+wikipedia = "*"
+"langchain-community.utilities" = "*"
 
 [dev-packages]
 
